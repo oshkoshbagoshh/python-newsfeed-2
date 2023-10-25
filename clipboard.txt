@@ -1,0 +1,22 @@
+- How to start the Virtual environment 
+. venv/vin/activate
+
+- Flask has templating builtin with Jinja2
+- example:
+
+<ol>
+
+{% for posts in posts %}
+<li>
+    <a href="{{post.post_url}}">{{post.title}}</a>
+</li>
+{% endfor %}
+</ol>
+
+
+----
+Packages vs. Modules 
+
+- because the routes directory has a __init__.py file, it's a Packages
+- In contrast, because home.py is a standalone file, it's a module that belongs to the routes package. 
+
