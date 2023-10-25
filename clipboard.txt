@@ -1,3 +1,6 @@
+- How to start the Virtual environment 
+. venv/vin/activate
+
 - Flask has templating builtin with Jinja2
 - example:
 
