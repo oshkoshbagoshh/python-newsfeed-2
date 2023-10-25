@@ -20,3 +20,82 @@ Packages vs. Modules
 - because the routes directory has a __init__.py file, it's a Packages
 - In contrast, because home.py is a standalone file, it's a module that belongs to the routes package. 
 
+====
+
+Flask Application Context 
+
+- Flask creates a new context everytime a server request is made. When the request ends, the context is removed from the app. 
+- These temp contexts provide global variables, like the 'g' object, that can be shared across modules as long as the context is still activate
+
+====
+  python -m flask run
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/flask/__main__.py", line 3, in <module>
+    main()
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/flask/cli.py", line 1064, in main
+    cli.main()
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/click/decorators.py", line 92, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/flask/cli.py", line 912, in run_command
+    raise e from None
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/flask/cli.py", line 898, in run_command
+    app = info.load_app()
+          ^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/flask/cli.py", line 313, in load_app
+    app = locate_app(import_name, None, raise_if_not_found=False)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/flask/cli.py", line 219, in locate_app
+    __import__(module_name)
+  File "/Users/aj/python-newsfeed-2/app/__init__.py", line 2, in <module>
+    from app.routes import home # import the home module
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/app/routes/__init__.py", line 2, in <module>
+    from .home import bp as home
+  File "/Users/aj/python-newsfeed-2/app/routes/home.py", line 2, in <module>
+    from app.models import Post
+  File "/Users/aj/python-newsfeed-2/app/models/__init__.py", line 2, in <module>
+    from .Post import Post
+  File "/Users/aj/python-newsfeed-2/app/models/Post.py", line 9, in <module>
+    class Post(Base):
+  File "/Users/aj/python-newsfeed-2/app/models/Post.py", line 25, in Post
+    select ([func.count(Vote.id)]).where(Vote.post_id == id)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/_selectable_constructors.py", line 489, in select
+    return Select(*entities)
+           ^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/selectable.py", line 5136, in __init__
+    self._raw_columns = [
+                        ^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/selectable.py", line 5137, in <listcomp>
+    coercions.expect(
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 413, in expect
+    resolved = impl._literal_coercion(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 651, in _literal_coercion
+    self._raise_for_expected(element, argname)
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 1139, in _raise_for_expected
+    return super()._raise_for_expected(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 710, in _raise_for_expected
+    super()._raise_for_expected(
+  File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 535, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: Column expression, FROM clause, or other columns clause element expected, got [<sqlalchemy.sql.functions.count at 0x103166f90; count>]. Did you mean to say select(<sqlalchemy.sql.functions.count at 0x103166f90; count>)?

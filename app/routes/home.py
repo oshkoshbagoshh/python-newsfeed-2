@@ -1,11 +1,25 @@
 from flask import Blueprint, render_template
+from app.models import Post
+from app.db import get_db
+
 
 bp = Blueprint('home', __name__, url_prefix='/')
 
 # use the decorator pattern to turn the index() function into a route
 @bp.route('/')
 def index():
-    return render_template('homepage.html')
+    # get all posts 
+    db = get_db()
+    posts = (
+        db
+        .query(Post)
+        .order_by(Post.created_at.desc())
+        .all() # get all posts in descending order
+    )
+    return render_template(
+        'homepage.html',
+        posts=posts
+    )
 
 # use the decorator pattern to turn the login() function into a route
 @bp.route('/login')

@@ -3,7 +3,19 @@
     "tree": [
       {
         "key": 1698264446817,
-        "children": [],
+        "children": [
+          {
+            "key": 1698269536789,
+            "children": [],
+            "todo": {
+              "content": "",
+              "id": 1698269536789,
+              "level": "default",
+              "done": false,
+              "start": 1698269536789
+            }
+          }
+        ],
         "todo": {
           "content": "create a script to start the flask server",
           "id": 1698264446817,
@@ -11,9 +23,44 @@
           "done": false,
           "start": 1698264446817
         }
+      },
+      {
+        "key": 1698269540621,
+        "children": [],
+        "todo": {
+          "content": "faker",
+          "id": 1698269540621,
+          "level": "default",
+          "done": false,
+          "start": 1698269540622
+        }
+      },
+      {
+        "key": 1698269545605,
+        "children": [],
+        "todo": {
+          "content": "jinja",
+          "id": 1698269545605,
+          "level": "default",
+          "done": false,
+          "start": 1698269545605
+        }
+      },
+      {
+        "key": 1698269559468,
+        "children": [],
+        "todo": {
+          "content": "libraries",
+          "id": 1698269559468,
+          "level": "default",
+          "done": false,
+          "start": 1698269559468
+        }
       }
     ],
-    "expandKeys": [],
+    "expandKeys": [
+      1698264446817
+    ],
     "schema": "https://github.com/Saber2pr/vsc-ext-todolist/blob/master/src/api/type.ts#L3",
     "add_mode": "bottom",
     "virtual": false,
@@ -24,6 +71,6 @@
     "showEndTime": false,
     "simpleMode": false,
     "lang": "en",
-    "version": "1698264457021"
+    "version": "1698269563808"
   }
 }
