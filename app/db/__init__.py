@@ -3,6 +3,8 @@ from os import getenv
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+# from python-dotenv import load_dotenv
+# from python-dotenv import load_dotenv
 from dotenv import load_dotenv
 
 # load env variables
