@@ -141,3 +141,8 @@ mysql -u root -p
 ```sql
 CREATE DATABASE python_news_db;
 ```
+
+- in the DB folder, create a schema.sql and and __init__.py file. (Remember, the __init__.py file is needed to make the folder a package)
+
+- CRUD operations (Create, Read, Update, Delete)
+- SQLAlchemy has a session object that is used to interact with the database
