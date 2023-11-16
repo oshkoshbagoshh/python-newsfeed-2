@@ -1,5 +1,6 @@
 - How to start the Virtual environment 
-. venv/vin/activate
+. venv/bin/activate
+
 
 - Flask has templating builtin with Jinja2
 - example:
@@ -17,7 +18,7 @@
 ----
 Packages vs. Modules 
 
-- because the routes directory has a __init__.py file, it's a Packages
+- because the routes directory has a __init__.py file, it's a Package
 - In contrast, because home.py is a standalone file, it's a module that belongs to the routes package. 
 
 ====
@@ -99,3 +100,26 @@ Traceback (most recent call last):
   File "/Users/aj/python-newsfeed-2/venv/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 535, in _raise_for_expected
     raise exc.ArgumentError(msg, code=code) from err
 sqlalchemy.exc.ArgumentError: Column expression, FROM clause, or other columns clause element expected, got [<sqlalchemy.sql.functions.count at 0x103166f90; count>]. Did you mean to say select(<sqlalchemy.sql.functions.count at 0x103166f90; count>)?
+
+/Users/aj/python-newsfeed-2/app/models/Post.py:30: SAWarning: implicitly coercing SELECT object to scalar subquery; please use the .scalar_subquery() method to produce a scalar subquery.
+  vote_count = column_property(
+2023-11-16 08:21:32,644 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2023-11-16 08:21:32,644 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,646 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2023-11-16 08:21:32,646 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,646 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2023-11-16 08:21:32,646 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,647 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2023-11-16 08:21:32,647 INFO sqlalchemy.engine.Engine DESCRIBE `python_news_db`.`users`
+2023-11-16 08:21:32,647 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,672 INFO sqlalchemy.engine.Engine DESCRIBE `python_news_db`.`votes`
+2023-11-16 08:21:32,673 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,677 INFO sqlalchemy.engine.Engine DESCRIBE `python_news_db`.`comments`
+2023-11-16 08:21:32,677 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,679 INFO sqlalchemy.engine.Engine DESCRIBE `python_news_db`.`posts`
+2023-11-16 08:21:32,679 INFO sqlalchemy.engine.Engine [raw sql] {}
+2023-11-16 08:21:32,681 INFO sqlalchemy.engine.Engine COMMIT
+ * Debug mode: off
+
+
+ 

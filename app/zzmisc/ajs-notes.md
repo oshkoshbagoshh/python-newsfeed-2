@@ -101,3 +101,43 @@ python -m venv venv
 source venv/bin/activate
 
 ```
+
+---
+
+- Flask
+- Flask is a microframework for Python
+- Flask is used to build web apps
+
+- Flask has templating builtin with Jinja2
+- example:
+
+
+
+```
+<ol>
+
+{% for posts in posts %}
+<li>
+    <a href="{{post.post_url}}">{{post.title}}</a>
+</li>
+{% endfor %}
+</ol>
+
+```
+
+
+---
+
+## Lesson 2: 
+- Set up the database
+
+- SQLAlchemy is a Python library for working with databases
+- SQLAlchemy is an ORM (Object Relational Mapper)
+
+```bash
+mysql -u root -p
+```
+
+```sql
+CREATE DATABASE python_news_db;
+```
