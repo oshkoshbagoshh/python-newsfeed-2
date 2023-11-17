@@ -1,4 +1,9 @@
 from flask import g
+import sqlalchemy
+# import sqlalchemy.orm psycopg2
+import psycopg2
+# import python dotenv
+import dotenv 
 from os import getenv
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
