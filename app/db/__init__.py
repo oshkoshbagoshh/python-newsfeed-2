@@ -6,8 +6,9 @@ from sqlalchemy.orm import sessionmaker
 
 # import declarative_base from sqlalchemy.ext.declarative
 from dotenv import load_dotenv
-from python_dotenv import load_dotenv
-from sqlalchemy.engine.url import URL
+
+# from python_dotenv import load_dotenv
+# from sqlalchemy.engine.url import URL
 from sqlalchemy.engine.url import URL
 
 
@@ -23,10 +24,9 @@ if db_url is None:
     raise ValueError("DB_URL environment variable is not set")
 engine = create_engine(URL.create(db_url), echo=True, pool_size=20, max_overflow=0)
 # engine = create_engine(getenv("DB_URL"), echo=True, pool_size=20, max_overflow=0)
-engine = create_engine(getenv("DB_URL"), echo=True, pool_size=20, max_overflow=0)
+engine = create_engine(getenv(DB_URL), echo=True, pool_size=20, max_overflow=0)
 Session = sessionmaker(bind=engine)
 Base = sqlalchemy.orm.declarative_base()
-
 
 
 def init_db():
