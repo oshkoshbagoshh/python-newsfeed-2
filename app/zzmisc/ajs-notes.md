@@ -98,7 +98,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ```bash
 
 python -m venv venv
-source venv/bin/activate
+source . venv/bin/activate
 
 ```
 
@@ -146,3 +146,7 @@ CREATE DATABASE python_news_db;
 
 - CRUD operations (Create, Read, Update, Delete)
 - SQLAlchemy has a session object that is used to interact with the database
+-  env variables are used to store sensitive information like passwords, and database connection strings
+-  env variables are stored in a .env file
+-  env variables are loaded into the app using the python-dotenv library
+- the .env file is not committed to source control
