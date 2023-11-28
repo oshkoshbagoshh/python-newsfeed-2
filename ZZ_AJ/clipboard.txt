@@ -3,7 +3,7 @@
  * @Email: amirjavadi25@gmail.com
  * @Date: 2023-11-28 11:22:14 
  * @Last Modified by: Someone
- * @Last Modified time: 2023-11-28 14:15:29
+ * @Last Modified time: 2023-11-28 14:40:14
  * @Description: file:///Users/aj/python-newsfeed-2/ZZ_AJ/clipboard.txt
  */
 
@@ -40,3 +40,18 @@
 
 ======
 - Create API endpoint for new users 
+
+
+====
+
+Add Error Handling
+A signup error can occur in several situations, like any of the following examples:
+
+A user signs up with an email address that's already in use.
+
+A user's email address doesn't contain an at-sign character (@).
+
+A user's password is fewer than five characters in length.
+
+Fortunately, the User model is set up to throw an error when these cases happen—thanks to the unique=True option on the email field and the validations that use assert.
+

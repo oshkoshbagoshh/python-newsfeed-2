@@ -38,3 +38,6 @@
 - use the faker library to generate fake users and posts.
 - use the faker library to generate fake trending searches.
 - Testt cases 
+- add CLI progam to add users and posts.
+- add program to pull trending searches from google trends, and add them to the database.
+- 
