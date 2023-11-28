@@ -9,8 +9,9 @@
 # imports 
 from datetime import datetime
 from app.db import Base
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
+from .Vote import Vote
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, select, func
+from sqlalchemy.orm import relationship, column_property
 
 
 # Post model
@@ -23,4 +24,12 @@ class Post(Base):
     created_at = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
+    # relationship
     user = relationship('User')
+    comments = relationship('Comment', cascade='all,delete')
+    votes = relationship('Vote', cascade='all,delete')
+    
+    # votes relationship    
+    vote_count = column_property(
+        select(func.count(Vote.id)).where(Vote.post_id == id).as_scalar()
+    )

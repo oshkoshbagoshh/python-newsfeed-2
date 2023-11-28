@@ -1,0 +1,35 @@
+/*
+ * @Author: AJ Javadi 
+ * @Email: amirjavadi25@gmail.com
+ * @Date: 2023-11-28 11:22:14 
+ * @Last Modified by: Someone
+ * @Last Modified time: 2023-11-28 11:36:21
+ * @Description: file:///Users/aj/python-newsfeed-2/ZZ_AJ/clipboard.txt
+ */
+
+
+================
+
+- JSON Code for querying posts:
+
+{
+  "id": 1,
+  "title": "How to Learn Python",
+  "user_id": 2,
+  "user": {
+    "id": 2,
+    "username": "lernantino" // post author
+  },
+  "comments": [
+    {
+      "id": 1,
+      "comment_text": "Great article!",
+      "post_id": 1,
+      "user_id": 3,
+      "user": {
+        "id": 3,
+        "username": "someone_else" // comment author
+      }
+    }
+  ]
+}
