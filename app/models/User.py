@@ -1,6 +1,6 @@
 # create a user class
 from app.db import Base
-from sqlalhemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String
 
 
 
