@@ -3,7 +3,7 @@
  * @Email: amirjavadi25@gmail.com
  * @Date: 2023-11-28 11:22:14 
  * @Last Modified by: Someone
- * @Last Modified time: 2023-11-28 12:22:35
+ * @Last Modified time: 2023-11-28 14:15:29
  * @Description: file:///Users/aj/python-newsfeed-2/ZZ_AJ/clipboard.txt
  */
 
@@ -38,3 +38,5 @@
 
 - Use Jinja2 functions / filters to clean up the output using pythons strftime() and strfdate()
 
+======
+- Create API endpoint for new users 
