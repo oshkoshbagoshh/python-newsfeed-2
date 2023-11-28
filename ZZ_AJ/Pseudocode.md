@@ -26,5 +26,7 @@
 
 
 <!-- TODO: BOOKMARK -->
-
+- Faker library: https://faker.readthedocs.io/en/master/
+- use the faker library to generate fake users and posts.
+- use the faker library to generate fake trending searches.
 
