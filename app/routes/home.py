@@ -13,7 +13,7 @@ def index():
   posts = (
     db
       .query(Post)
-      .order_by(Post.created_at.desc())
+      .order_by(Post.created_at.desc()) # newest post first
       .all()
   )
   return render_template(
