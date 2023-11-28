@@ -6,7 +6,7 @@
 # @Description: file:///Users/aj/python-newsfeed-2/app/routes/api.py
 # ====================================================================================================
 
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from app.models import User 
 from app.db import get_db
 import sys 
@@ -34,15 +34,56 @@ def signup():
 
         # save in database
         db.add(newUser)
+        # print success
+        print('success!')
         # commit to database
         db.commit()
     except:
+        # print error
         print(sys.exc_info()[0])
         # insert failed , so send message to front end 
+        # rollback to previous state
+        db.rollback()
         return jsonify(message = 'Signup failed'), 500
         
+    
+    # sessions 
+    session.clear()
+    session['user_id'] = newUser.id # create a session for user
+    session['loggedIn'] = True # set loggedIn to true
     return jsonify(id=newUser.id)
 
 
 
 
+# logout route 
+# /api/auth/logout
+@bp.route('/users/logout', methods=['POST'])
+def logout():
+    # remove session variables
+    session.clear()
+    return '', 204  # HTTP status code 204 means the server successfully processed the request, but is not returning any content.
+
+
+# login route
+# /api/auth/login
+# login route
+@bp.route('/users/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    db = get_db()
+
+    user = None  # Initialize user variable
+    try:
+        user = db.query(User).filter(User.email == data['email']).one()
+        if user.verify_password(data['password']) == False:
+                return jsonify(message = 'Incorrect credentials'), 400
+        session.clear()
+        session['user_id'] = user.id
+        session['loggedIn'] = True
+        return jsonify(id = user.id)
+    except NoResultFound:
+        return jsonify(message='Incorrect credentials'), 400
+    except Exception as e:
+        traceback.print_exc()
+        return jsonify(message='An error occurred'), 500    
