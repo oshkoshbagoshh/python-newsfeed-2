@@ -5,12 +5,16 @@
 # @Last Modified time: 2023-11-28 14:15:51
 # @Description: file:///Users/aj/python-newsfeed-2/app/routes/api.py
 # ====================================================================================================
-
+# imports 
 from flask import Blueprint, request, jsonify, session
-from app.models import User 
+from app.models import User, Post, Comment, Vote
 from app.db import get_db
-import sys 
+# from app.utils.auth import login_required
+import sys
+import traceback
+from sqlalchemy.orm.exc import NoResultFound
 
+# ====================================================================================================
 # Blueprint Configuration
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -20,12 +24,12 @@ bp = Blueprint('api', __name__, url_prefix='/api')
 @bp.route('/users', methods=['POST'])
 def signup():
     data = request.get_json()
-    db = get_db()
     # print(data)
+    db = get_db()
     
     # error handling
     try :
-        # create a new user
+        # attempt to create a new user
         newUser = User(
             username = data['username'],
             email = data['email'],
@@ -42,12 +46,12 @@ def signup():
         # print error
         print(sys.exc_info()[0])
         # insert failed , so send message to front end 
-        # rollback to previous state
-        db.rollback()
+        db.rollback() # rollback to previous state
         return jsonify(message = 'Signup failed'), 500
         
     
-    # sessions 
+    # user's session info 
+    # this clears the existing session data and creates a new session for the user
     session.clear()
     session['user_id'] = newUser.id # create a session for user
     session['loggedIn'] = True # set loggedIn to true
@@ -86,4 +90,7 @@ def login():
         return jsonify(message='Incorrect credentials'), 400
     except Exception as e:
         traceback.print_exc()
-        return jsonify(message='An error occurred'), 500    
+        return jsonify(message='An error occurred'), 500   
+    
+    
+

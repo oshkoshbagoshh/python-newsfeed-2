@@ -2,7 +2,10 @@ from flask import Flask
 from app.routes import home, dashboard, api
 from app.db import init_db
 from app.utils import filters
+from sqlalchemy import create_engine
+from sqlalchemy.dialects.postgresql import psycopg2
 
+# ====================================================================================================
 def create_app(test_config=None):
   # set up app config
   app = Flask(__name__, static_url_path='/')
@@ -35,3 +38,4 @@ def create_app(test_config=None):
   
   # final return
   return app
+
