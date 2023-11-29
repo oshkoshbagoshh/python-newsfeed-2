@@ -25,9 +25,10 @@ class User(Base):
 
         # encrypt password
         return bcrypt.hashpw(password.encode('utf-8'), salt)
+        # password = bcrypt.hashpw(password.decode('utf-8'))
         # return password
     
-    # check if password is valid. Need to decode password from database
+    # verify password
     def verify_password(self, password):
         return bcrypt.checkpw(
             password.encode('utf-8'),
