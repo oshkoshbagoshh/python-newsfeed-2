@@ -11,7 +11,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(50), nullable=False)
     email = Column(String(50), nullable=False, unique=True)
-    password = Column(String(255), nullable=False)
+    password = Column(String(100), nullable=False)
 
     @validates('email')
     def validate_email(self, key, email):
@@ -27,5 +27,5 @@ class User(Base):
         return bcrypt.hashpw(password.encode('utf-8'), salt)
         # return password
     
-    # def verify_password(self, password):
-    #     return self.password == password
+    def verify_password(self, password):
+        return self.password == password

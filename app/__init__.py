@@ -1,8 +1,11 @@
 from flask import Flask
-from app.routes import home, dashboard
+from app.routes import home, dashboard, api
 from app.db import init_db
 from app.utils import filters
+from sqlalchemy import create_engine
+from sqlalchemy.dialects.postgresql import psycopg2
 
+# ====================================================================================================
 def create_app(test_config=None):
   # set up app config
   app = Flask(__name__, static_url_path='/')
@@ -21,6 +24,8 @@ def create_app(test_config=None):
   # register routes
   app.register_blueprint(home)
   app.register_blueprint(dashboard)
+  app.register_blueprint(api) # register api blueprint with a url prefix of /api
+  
 
   # register filters for jinja2 templates 
   app.jinja_env.filters['format_url'] = filters.format_url
@@ -33,3 +38,4 @@ def create_app(test_config=None):
   
   # final return
   return app
+
