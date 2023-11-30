@@ -1,0 +1,100 @@
+2023-11-30T03:26:52.767933+00:00 heroku[web.1]: State changed from starting to up
+2023-11-30T03:26:52.809102+00:00 app[web.1]: Traceback (most recent call last):
+2023-11-30T03:26:52.809108+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 209, in run
+2023-11-30T03:26:52.809236+00:00 app[web.1]: self.sleep()
+2023-11-30T03:26:52.809262+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 357, in sleep
+2023-11-30T03:26:52.809332+00:00 app[web.1]: ready = select.select([self.PIPE[0]], [], [], 1.0)
+2023-11-30T03:26:52.809400+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.809416+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+2023-11-30T03:26:52.809457+00:00 app[web.1]: self.reap_workers()
+2023-11-30T03:26:52.809470+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+2023-11-30T03:26:52.809542+00:00 app[web.1]: raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+2023-11-30T03:26:52.809579+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+2023-11-30T03:26:52.809579+00:00 app[web.1]: 
+2023-11-30T03:26:52.809580+00:00 app[web.1]: During handling of the above exception, another exception occurred:
+2023-11-30T03:26:52.809581+00:00 app[web.1]: 
+2023-11-30T03:26:52.809581+00:00 app[web.1]: Traceback (most recent call last):
+2023-11-30T03:26:52.809590+00:00 app[web.1]: File "/app/.heroku/python/bin/gunicorn", line 8, in <module>
+2023-11-30T03:26:52.809661+00:00 app[web.1]: sys.exit(run())
+2023-11-30T03:26:52.809661+00:00 app[web.1]: ^^^^^
+2023-11-30T03:26:52.809672+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2023-11-30T03:26:52.809675+00:00 app[web.1]: WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2023-11-30T03:26:52.809695+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/base.py", line 231, in run
+2023-11-30T03:26:52.809741+00:00 app[web.1]: super().run()
+2023-11-30T03:26:52.809757+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2023-11-30T03:26:52.809784+00:00 app[web.1]: Arbiter(self).run()
+2023-11-30T03:26:52.809798+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 229, in run
+2023-11-30T03:26:52.809841+00:00 app[web.1]: self.halt(reason=inst.reason, exit_status=inst.exit_status)
+2023-11-30T03:26:52.809863+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 342, in halt
+2023-11-30T03:26:52.809916+00:00 app[web.1]: self.stop()
+2023-11-30T03:26:52.809927+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 393, in stop
+2023-11-30T03:26:52.809984+00:00 app[web.1]: time.sleep(0.1)
+2023-11-30T03:26:52.809998+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 242, in handle_chld
+2023-11-30T03:26:52.810034+00:00 app[web.1]: self.reap_workers()
+2023-11-30T03:26:52.810049+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 525, in reap_workers
+2023-11-30T03:26:52.810112+00:00 app[web.1]: raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+2023-11-30T03:26:52.810132+00:00 app[web.1]: gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+2023-11-30T03:26:52.826001+00:00 app[web.1]: [2023-11-30 03:26:52 +0000] [10] [ERROR] Exception in worker process
+2023-11-30T03:26:52.826003+00:00 app[web.1]: Traceback (most recent call last):
+2023-11-30T03:26:52.826004+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/arbiter.py", line 589, in spawn_worker
+2023-11-30T03:26:52.826004+00:00 app[web.1]: worker.init_process()
+2023-11-30T03:26:52.826005+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/workers/base.py", line 134, in init_process
+2023-11-30T03:26:52.826005+00:00 app[web.1]: self.load_wsgi()
+2023-11-30T03:26:52.826005+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/workers/base.py", line 146, in load_wsgi
+2023-11-30T03:26:52.826005+00:00 app[web.1]: self.wsgi = self.app.wsgi()
+2023-11-30T03:26:52.826006+00:00 app[web.1]: ^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826006+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2023-11-30T03:26:52.826006+00:00 app[web.1]: self.callable = self.load()
+2023-11-30T03:26:52.826006+00:00 app[web.1]: ^^^^^^^^^^^
+2023-11-30T03:26:52.826006+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2023-11-30T03:26:52.826007+00:00 app[web.1]: return self.load_wsgiapp()
+2023-11-30T03:26:52.826007+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826007+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2023-11-30T03:26:52.826007+00:00 app[web.1]: return util.import_app(self.app_uri)
+2023-11-30T03:26:52.826007+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826007+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/gunicorn/util.py", line 359, in import_app
+2023-11-30T03:26:52.826008+00:00 app[web.1]: mod = importlib.import_module(module)
+2023-11-30T03:26:52.826008+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826008+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2023-11-30T03:26:52.826010+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2023-11-30T03:26:52.826010+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826010+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2023-11-30T03:26:52.826010+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2023-11-30T03:26:52.826010+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2023-11-30T03:26:52.826011+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2023-11-30T03:26:52.826011+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2023-11-30T03:26:52.826011+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2023-11-30T03:26:52.826011+00:00 app[web.1]: File "/app/app/__init__.py", line 2, in <module>
+2023-11-30T03:26:52.826011+00:00 app[web.1]: from app.routes import home, dashboard, api
+2023-11-30T03:26:52.826012+00:00 app[web.1]: File "/app/app/routes/__init__.py", line 1, in <module>
+2023-11-30T03:26:52.826012+00:00 app[web.1]: from .home import bp as home
+2023-11-30T03:26:52.826012+00:00 app[web.1]: File "/app/app/routes/home.py", line 2, in <module>
+2023-11-30T03:26:52.826012+00:00 app[web.1]: from app.models import Post
+2023-11-30T03:26:52.826012+00:00 app[web.1]: File "/app/app/models/__init__.py", line 1, in <module>
+2023-11-30T03:26:52.826013+00:00 app[web.1]: from .User import User
+2023-11-30T03:26:52.826013+00:00 app[web.1]: File "/app/app/models/User.py", line 3, in <module>
+2023-11-30T03:26:52.826013+00:00 app[web.1]: from app.db import Base
+2023-11-30T03:26:52.826013+00:00 app[web.1]: File "/app/app/db/__init__.py", line 12, in <module>
+2023-11-30T03:26:52.826013+00:00 app[web.1]: engine = create_engine(getenv("DB_URL"), pool_pre_ping=True)
+2023-11-30T03:26:52.826013+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826013+00:00 app[web.1]: File "<string>", line 2, in create_engine
+2023-11-30T03:26:52.826014+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2023-11-30T03:26:52.826014+00:00 app[web.1]: return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2023-11-30T03:26:52.826014+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826014+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 552, in create_engine
+2023-11-30T03:26:52.826014+00:00 app[web.1]: entrypoint = u._get_entrypoint()
+2023-11-30T03:26:52.826015+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826035+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/sqlalchemy/engine/url.py", line 754, in _get_entrypoint
+2023-11-30T03:26:52.826035+00:00 app[web.1]: cls = registry.load(name)
+2023-11-30T03:26:52.826036+00:00 app[web.1]: ^^^^^^^^^^^^^^^^^^^
+2023-11-30T03:26:52.826036+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 368, in load
+2023-11-30T03:26:52.826036+00:00 app[web.1]: raise exc.NoSuchModuleError(
+2023-11-30T03:26:52.826036+00:00 app[web.1]: sqlalchemy.exc.NoSuchModuleError: Can't load plugin: sqlalchemy.dialects:postgres.psycopg2
+2023-11-30T03:26:52.826124+00:00 app[web.1]: [2023-11-30 03:26:52 +0000] [10] [INFO] Worker exiting (pid: 10)
+2023-11-30T03:26:52.935190+00:00 heroku[web.1]: Process exited with status 1
+2023-11-30T03:26:52.954265+00:00 heroku[web.1]: State changed from up to crashed
+2023-11-30T03:26:55.000000+00:00 app[api]: Build succeeded
+2023-11-30T03:28:15.898523+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=python-newsfeed-2023-5cc5af7e4103.herokuapp.com request_id=8c185950-219d-4253-a05a-2007d46f0fc7 fwd="76.142.78.51" dyno= connect= service= status=503 bytes= protocol=https
+2023-11-30T03:28:17.795923+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=python-newsfeed-2023-5cc5af7e4103.herokuapp.com request_id=99598b26-c076-45fe-988f-0a3b5eb95892 fwd="76.142.78.51" dyno= connect= service= status=503 bytes= protocol=https
+2023-11-30T03:28:22.186184+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=python-newsfeed-2023-5cc5af7e4103.herokuapp.com request_id=a4fb30db-1bfb-4bfd-b895-13b878115397 fwd="76.142.78.51" dyno= connect= service= status=503 bytes= protocol=https
+2023-11-30T03:28:46.113977+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=python-newsfeed-2023-5cc5af7e4103.herokuapp.com request_id=70d9a5ef-5723-4e07-8d34-b156223d9e17 fwd="76.142.78.51" dyno= connect= service= status=503 bytes= protocol=https
