@@ -5,37 +5,28 @@ from app.utils import filters
 from sqlalchemy import create_engine
 from sqlalchemy.dialects.postgresql import psycopg2
 
-# ====================================================================================================
 def create_app(test_config=None):
-  # set up app config
-  app = Flask(__name__, static_url_path='/')
-  app.url_map.strict_slashes = False
-  app.config.from_mapping(
-    SECRET_KEY='super_secret_key'
-  )
+    # set up app config
+    app = Flask(__name__, static_url_path='/')
+    app.url_map.strict_slashes = False
+    app.config.from_mapping(
+        SECRET_KEY='super_secret_key'
+    )
+    app.register_blueprint(api)
 
+    @app.route('/hello')
+    def hello():
+        return 'Hello World!'
+    
+    # register routes
+    app.register_blueprint(home)
+    app.register_blueprint(dashboard)
 
-  
-  @app.route('/hello')
-  def hello():
-    return 'hello world'
+    # register Jinja template registration
+    app.jinja_env.filters['format_url'] = filters.format_url
+    app.jinja_env.filters['format_date'] = filters.format_date
+    app.jinja_env.filters['format_plural'] = filters.format_plural
 
+    init_db(app)
 
-  # register routes
-  app.register_blueprint(home)
-  app.register_blueprint(dashboard)
-  app.register_blueprint(api) # register api blueprint with a url prefix of /api
-  
-
-  # register filters for jinja2 templates 
-  app.jinja_env.filters['format_url'] = filters.format_url
-  app.jinja_env.filters['format_date'] = filters.format_date
-  app.jinja_env.filters['format_plural'] = filters.format_plural
-
-
-  # initialize database
-  init_db(app)
-  
-  # final return
-  return app
-
+    return app

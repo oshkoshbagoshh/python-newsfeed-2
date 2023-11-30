@@ -94,7 +94,7 @@ def comment():
     return jsonify(id = newComment.id)
 
 
-upvote route
+#upvote route
 @bp.route('/posts/upvote', methods=['PUT'])
 @login_required
 def upvote():
